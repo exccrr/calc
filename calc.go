@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// romanToArabic представляет карту для преобразования римских цифр в арабские
+
 var romanToArabic = map[string]int{
     "I":  1,
     "II": 2,
@@ -22,7 +22,7 @@ var romanToArabic = map[string]int{
     "X":   10,
 }
 
-// arabicToRoman представляет массив для преобразования арабских цифр в римские
+
 const maxRomanResult = "C"
 
 var arabicToRoman = []string{
@@ -38,19 +38,19 @@ var arabicToRoman = []string{
     "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C",
 }
 
-// isArabic проверяет, является ли переданная строка арабской цифрой
+
 func isArabic(s string) bool {
     _, err := strconv.Atoi(s)
     return err == nil
 }
 
-// isRoman проверяет, является ли переданная строка римской цифрой
+
 func isRoman(s string) bool {
     _, exists := romanToArabic[s]
     return exists
 }
 
-// toArabic преобразует переданную строку в арабское число
+
 func toArabic(s string) int {
     if val, err := strconv.Atoi(s); err == nil {
         return val
@@ -58,7 +58,7 @@ func toArabic(s string) int {
     return romanToArabic[s]
 }
 
-// toRoman преобразует переданное арабское число в римскую цифру
+
 func toRoman(n int) string {
     if n <= 0 || n >= len(arabicToRoman) {
         panic("Результат выходит за пределы диапазона")
@@ -66,7 +66,6 @@ func toRoman(n int) string {
     return arabicToRoman[n]
 }
 
-// evaluate выполняет арифметическую операцию над двумя числами
 func operations(a, b int, operator string) int {
     switch operator {
     case "-":
@@ -106,7 +105,7 @@ func main() {
         operand1, operator, operand2 := tokens[0], tokens[1], tokens[2]
 
        
-        // Обработка римских цифр
+        
         if isRoman(operand1) && isRoman(operand2) {
             a := toArabic(operand1)
             b := toArabic(operand2)
@@ -120,7 +119,7 @@ func main() {
             fmt.Printf("Результат: %s\n", toRoman(result))
         }
 
-         // Обработка арабских цифр
+        
          if isArabic(operand1) && isArabic(operand2) {
             a := toArabic(operand1)
             b := toArabic(operand2)
@@ -131,7 +130,7 @@ func main() {
             fmt.Printf("Результат: %d\n", result)
         }
 
-        // Обработка некорректных входных данных
+        
         if !isArabic(operand1) && !isRoman(operand1) || !isArabic(operand2) && !isRoman(operand2) {
             panic("Некорректные входные данные")
         }
