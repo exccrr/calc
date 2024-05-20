@@ -92,7 +92,7 @@ func main() {
         }
         expression := scanner.Text()
         
-        // Выход из программы при вводе "exit"
+        
         if strings.ToLower(expression) == "exit" {
             break
         }
